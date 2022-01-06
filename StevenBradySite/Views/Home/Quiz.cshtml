@@ -1,0 +1,29 @@
+﻿@model QuizModel
+@{ 
+    ViewData["Title"] = "Quiz Time"; 
+}
+
+<h1>Test your knowledge</h1>
+
+<main class="container">
+    <p>Answer Question Below</p>
+    <form asp-action="Quiz" method="post" id="PostForm" class="form-horizontal">
+        <input type="hidden" asp-for="quizQ1" value="@ViewBag.quizQ1" />
+        <select asp-for="quizQ1">
+        </select>
+        <select asp-for="quizQ1">
+            @foreach (var option in @ViewBag.QuizOptions)
+            {
+                @if (ViewBag.quizQ1 == option.Item1)
+                {
+                <option value="@option.Item1" selecteion>@option.Item2</option> }
+                else
+                {
+                    <option value="@option.Item1">@option.Item2</option> 
+                }       
+            }
+        </select>
+        <button type="submit">Submit Answer</button>
+    </form>
+
+</main>

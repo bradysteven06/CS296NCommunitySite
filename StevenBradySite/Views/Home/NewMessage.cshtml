@@ -1,0 +1,54 @@
+﻿@model MessageModel;
+
+
+<div class="container">
+    <div class="text-center">
+
+        <div class="text-center">
+            <h1 class="display-4 p-2">New Message</h1>
+            <p>A place for users sending messages to other users.</p>
+        </div>
+
+
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th></th>
+                <th>Last Name</th>
+                <th></th>
+                <th>Subject  </th>
+                <th></th>
+                <th>Message</th>
+                <th></th>
+                <th>Date</th>
+            </tr>
+
+            @foreach (MessageModel message in ViewBag.messages)
+            {
+                <tr>
+                    <td>@message.FirstName  </td>
+                    <td></td>
+                    <td>@message.LastName   </td>
+                    <td></td>
+                    <td>@message.Subject    </td>
+                    <td></td>
+                    <td>@message.Message</td>
+                    <td></td>
+                    <td>@message.Date</td>
+                </tr>
+}
+        </table>
+
+        <hr />
+        <a asp-controller="Home" asp-action="NewMessage">New Message</a>
+    </div>        
+</div>
+<form asp-action="Contact" method="post">
+    <input type="hidden" asp-for="MessageId" />
+    <label asp-for="FirstName">First Name: </label><input asp-for="FirstName" /><br />
+    <label asp-for="LastName">Last Name: </label><input asp-for="LastName" /><br />
+    <label asp-for="Subject">Subject: </label><input asp-for="Subject" /><br />
+    <label asp-for="Date">Date: </label><input asp-for="Date" /><br />
+    <label asp-for="Message">Message: </label><input asp-for="Message" /><br />
+    <button type="submit">@ViewBag.button</button>
+</form>
